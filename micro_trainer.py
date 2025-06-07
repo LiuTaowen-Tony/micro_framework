@@ -53,6 +53,9 @@ class Trainer:
         self.global_step = 0
         self.token_accum = 0
         self.loss_accum = 0.0
+        os.environ["WANDB_CONSOLE"] = "wrap"
+        os.environ["TOKENIZERS_PARALLELISM"] = "false"
+        torch.set_float32_matmul_precision("medium")
         
     def setup_distributed(self):
         """Initialize distributed training"""
